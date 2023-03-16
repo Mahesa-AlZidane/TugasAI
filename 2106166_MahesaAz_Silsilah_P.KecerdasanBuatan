@@ -1,0 +1,30 @@
+% Fakta
+menikah(David, Amy).
+menikah(Jack, Karen).
+menikah(John, Susan).
+anak(Liza, David, Amy).
+anak(Susan, Jack, Karen).
+anak(Peter, John, Susan).
+anak(John, David, Amy).
+anak(Ray, Jack, Karen).
+anak(Mary, John, Susan).
+
+laki_laki(David).
+laki_laki(Jack).
+laki_laki(John).
+laki_laki(Peter).
+laki_laki(Ray).
+perempuan(Amy).
+perempuan(Karen).
+perempuan(Susan).
+perempuan(Liza).
+perempuan(Mary).
+
+% Aturan
+orangtua(X, Y) :- anak(Y, X, _).
+orangtua(X, Y) :- anak(Y, _, X).
+
+saudara(X, Y) :- anak(X, A, B), anak(Y, A, B), X \= Y.
+
+ayah(X, Y) :- laki_laki(X), anak(Y, X, _).
+ibu(X, Y) :- perempuan(X), anak(Y, _, X).
